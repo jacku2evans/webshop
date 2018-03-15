@@ -109,6 +109,7 @@
                     <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
                     <h2>{{ $product->name }}</h2>
                     <p>{{ $product->content }}</p>
+                    <p>$ {{ $product->price }}</p>
                     <p class="pull-left"><a class="btn btn-default" href="" role="button">Подробнее</a></p>
                     <p class="pull-right"><a class="btn btn-danger" href="" role="button"><i class="fas fa-cart-arrow-down"></i> Купить</a></p>
                 </div>

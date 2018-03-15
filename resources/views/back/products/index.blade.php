@@ -15,7 +15,7 @@
                     <tr>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->slug }}</td>
-                        <td>{{ $product->content }}</td>
+                        <td>$ {{ $product->price }}</td>
                         <td>
                             <ul class="list-inline">
                                 <li><a href="{{ route('products.edit', [$product->id]) }}" class="btn btn-primary"><span class="fa fa-edit"></span> Редактировать</a></li>

@@ -7,6 +7,10 @@
         {{ Form::text('name', null, ['class' => 'form-control']) }}
     </div>
     <div class="form-group">
+        {{ Form::label('price', 'Product price') }}
+        {{ Form::text('price', null, ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group">
         {{ Form::label('slug', 'Product slug') }}
         {{ Form::text('slug', null, ['class' => 'form-control']) }}
     </div>
