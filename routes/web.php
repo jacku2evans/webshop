@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'MainController@index')->name('main');
+
+Auth::routes();
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::prefix('admin')->group(function () {
+        Route::resource('/categories', 'CategoryController');
+        Route::resource('/products', 'ProductController');
+        Route::resource('/posts', 'PostController');
+        Route::resource('/settings', 'SettingController');
+    });
 });
