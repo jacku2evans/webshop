@@ -33,6 +33,13 @@
                         <li><a href="/about">О компании</a></li>
                         <li><a href="/contact">Контакты</a></li>
                         <li><a href="/login">Войти</a></li>
+                        <li><a href="{{ route('product.shoppingCart') }}"><i class="fas fa-cart-arrow-down"></i>Корзина
+
+                            <span class="badge">
+                                <!-- колличество добавленных товаров -->
+                                {{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}
+                            </span>
+                            </a></li>
                     </ul>
                 </div>
             </div>
@@ -111,7 +118,7 @@
                     <p>{{ $product->content }}</p>
                     <p>$ {{ $product->price }}</p>
                     <p class="pull-left"><a class="btn btn-default" href="" role="button">Подробнее</a></p>
-                    <p class="pull-right"><a class="btn btn-danger" href="" role="button"><i class="fas fa-cart-arrow-down"></i> Купить</a></p>
+                    <p class="pull-right"><a class="btn btn-danger" href="{{ route('product.addToCart', ['id' => $product->id]) }}" role="button"><i class="fas fa-cart-arrow-down"></i> Купить</a></p>
                 </div>
             </div>
         </div><!-- /.col-lg-4 -->

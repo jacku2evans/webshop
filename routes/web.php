@@ -23,3 +23,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/settings', 'SettingController');
     });
 });
+// Роут добавления продукта в корзину
+Route::get('/add-to-cart/{id}', [
+    'uses' => 'MainController@getAddToCart',
+    'as' => 'product.addToCart'
+]);
+
+// Роут корзины
+Route::get('/shopping-cart/', [
+    'uses' => 'MainController@getCart',
+    'as' => 'product.shoppingCart'
+]);
