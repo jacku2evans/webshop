@@ -7,11 +7,15 @@
 
         <li class="list-group-item">
             {{ $product['item']['name'] }}
+            <br>
+            Цена: {{ $product['price'] }}
             <span class="badge">{{ $product['qty'] }}</span>
         </li>
 
     @endforeach
 </ul>
 <hr>
-{{ $totalQty }}
+Общая количество: {{ $totalQty }}
+<br>
+Общая цена: {{ $totalPrice }}
 @endsection

@@ -27,7 +27,7 @@ class Cart extends  Model
         // создаем массив где будем хранить наши добавленные продукты
         $storedItem = [
             'qty' => 0, // колличество
-            'price' => $this->price, // цена
+            'price' => $item->price, // цена
             'item' => $item // сам продукт
         ];
         // делаем проверку и если там есть продукты то проходимся по массиву и заносим данные
@@ -40,7 +40,7 @@ class Cart extends  Model
         $storedItem['qty']++;
 
         // увеличение цены на колличество
-        $storedItem['price'] = $this->price * $storedItem['qty'];
+        $storedItem['price'] = $item->price * $storedItem['qty'];
 
         $this->items[$id] = $storedItem;
 
@@ -49,7 +49,7 @@ class Cart extends  Model
 
         // Общую цену увеличиваем
         // прибавляем цену к цене
-        $this->totalPrice += $this->price;
+        $this->totalPrice += $item->price;
 
     }
 }
