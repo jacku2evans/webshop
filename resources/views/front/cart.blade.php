@@ -18,4 +18,6 @@
 Общая количество: {{ $totalQty }}
 <br>
 Общая цена: {{ $totalPrice }}
+<br>
+<a href="{{route('checkout')}}">Оформить</a>
 @endsection

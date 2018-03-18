@@ -52,4 +52,19 @@ class Cart extends  Model
         $this->totalPrice += $item->price;
 
     }
+    public function reduceByOne($id)
+    {
+        $this->items[$id]['qty']--;
+        $this->items[$id]['price'] -=$this->items[$id]['items']['price'];
+        $this->totalQty--;
+        if ($this->items[$id]['qty']<=0){
+            unset($this->items[$id]);
+        }
+    }
+    public function removeItems($id)
+    {
+        $this->totalQty -=$this->items[$id]['qty'];
+        $this->totalPrice -=$this->items[$id]['price'];
+        unset($this->items[$id]);
+    }
 }

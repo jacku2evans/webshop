@@ -34,3 +34,13 @@ Route::get('/shopping-cart/', [
     'uses' => 'MainController@getCart',
     'as' => 'product.shoppingCart'
 ]);
+// Роут оформление товара
+Route::get('/checkout/', [
+    'uses' => 'MainController@getCheckout',
+    'as' => 'checkout'
+]);
+// Роут оформление товара
+Route::get('/checkout/', [
+    'uses' => 'MainController@postCheckout',
+    'as' => 'checkout'
+]);

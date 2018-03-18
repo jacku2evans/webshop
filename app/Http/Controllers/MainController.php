@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\Product;
 use App\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Auth;
 
 class MainController extends Controller
 {
@@ -55,5 +57,52 @@ class MainController extends Controller
             'totalPrice' => $cart->totalPrice,
             'totalQty' => $cart->totalQty
         ]);
+    }
+    public function getCheckout()
+    {
+        if (!Session::has('cart')){
+            return view('front.checkout');
+        }
+
+
+        $oldCart = Session::get('cart');
+
+        $cart = new Cart ($oldCart);
+        $total = $cart->totalPrice;
+        return view('front.checkout', compact('total'));
+
+
+    }
+    public function postCheckout(Request $request)
+    {
+        if (!Session::has ('cart')){
+            return redirect()->route('shoppingCart');
+
+        }
+        $oldCart = Session::get('cart');
+
+        $cart = new Cart($oldCart);
+
+
+        //Создаём экземпляр класса нашего заказа
+        $order = new Order();
+
+
+        //Создаём наш обЬект и записываем в БД
+        $order->cart = serialize($cart);
+
+        //Записываем адрес покупателя в БД
+        $order->address = $request->input('address','address');
+        //Записываем имя покупателя в БД
+        $order->name = $request->input('name','name');
+
+        //вызываем метод orders у модели User и сохраняем в БД
+        Auth::user()->orders()->save($order);
+
+        //Закрываем сессию
+        Session::forget('cart');
+        return redirect()->route('main')->with('success','Заказ оформлен');
+
+
     }
 }
